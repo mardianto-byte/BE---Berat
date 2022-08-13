@@ -14,3 +14,8 @@ def berat_form(request):
         if form.is_valid() :
             form.save()
         return redirect("/berat/list")
+
+def berat_list(request) :
+    list = Berat.objects.all().order_by('-tanggal')
+    context = {"berat_list":list}
+    return render(request,"berat_register/berat_list.html", context)

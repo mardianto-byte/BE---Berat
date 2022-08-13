@@ -1,0 +1,54 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List berat</title>
+    <script type = "text/javascript">
+       function perbedaan(min,max){
+        return max - min;
+       }
+    </script>
+</head>
+
+<body>
+<table BORDER="2" id="table_berat">
+    <thead>
+        <th>Tanggal</th>
+        <th>Max</th>
+        <th>Min</th>
+        <th>Perbedaan</th>
+    </thead>
+    <tbody>
+        {% for berat in berat_list %}
+            <tr> 
+                <td id="tanggal">{{ berat.tanggal }}</td>
+                <td id="max">{{ berat.berat_max }}</td>
+                <td id="min">{{ berat.berat_min }}</td>
+                <td id="perbedaan"></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>Rata-rata</td>
+            <td id="average_max"></td>
+            <td id="average_min"></td>
+            <td id="average_diff"></td>
+        </tr>
+    </tbody>
+</table>
+<a href="{% url 'berat_form'%}" class="btn btn-secondary">Add new Data</a>
+
+<script>
+    var table = document.getElementById("table_berat"), diff, sumDiff=0, avgDiff, avgValMax, avgValMin, sumValMax=0, sumValMin=0;
+
+    for(var i = 1; i < table.rows.length-1; i++){
+        diff  = (parseInt(table.rows[i].cells[1].innerHTML) - parseInt(table.rows[i].cells[2].innerHTML));
+        sumDiff = sumDiff + (parseInt(table.rows[i].cells[1].innerHTML) - parseInt(table.rows[i].cells[2].innerHTML));
+        sumValMax = sumValMax + parseInt(table.rows[i].cells[1].innerHTML);
+        sumValMin = sumValMin + parseInt(table.rows[i].cells[2].innerHTML);
+        table.rows[i].cells[3].innerHTML = diff;
+    }
+    document.getElementById("average_max").innerHTML = (sumValMax/(table.rows.length-2)).toFixed(2); // minus header and average row
+    document.getElementById("average_min").innerHTML = (sumValMin/(table.rows.length-2)).toFixed(2);
+    document.getElementById("average_diff").innerHTML = (sumDiff/(table.rows.length-2)).toFixed(2);
+
+</script>
+</body>
