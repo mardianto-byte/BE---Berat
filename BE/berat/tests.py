@@ -43,3 +43,11 @@ class TestURL(TestCase):
         }
         response = self.client.post('/berat/0/', data)
         self.assertEqual(response.status_code,302)
+    
+    def test_berat_update_use_temp(self):
+        response = Client().get('/berat/1/')
+        self.assertTemplateUsed(response,'berat_register/berat_form.html')
+
+    def test_delete_berat(self):
+        response = Client().get('/berat/delete/1/')
+        self.assertEqual(response.status_code,302)
