@@ -24,6 +24,9 @@
                 <td id="max">{{ berat.berat_max }}</td>
                 <td id="min">{{ berat.berat_min }}</td>
                 <td id="perbedaan"></td>
+                <td>
+                    <a href="{% url 'update_berat' berat.id %}" class="btn btn-secondary">Edit</a>
+                </td>
             </tr>
         {% endfor %}
         <tr>
