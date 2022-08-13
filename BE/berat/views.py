@@ -9,3 +9,8 @@ def berat_form(request):
     if request.method == "GET":
         form = BeratForm()
         return render(request, "berat_register/berat_form.html", {"form": form})
+    else: 
+        form = BeratForm(request.POST)
+        if form.is_valid() :
+            form.save()
+        return redirect("/berat/list")
