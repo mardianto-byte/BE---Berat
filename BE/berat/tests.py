@@ -18,4 +18,10 @@ class TestURL(TestCase):
         response = Client().get('/berat/')
         self.assertTemplateUsed(response,'berat_register/berat_form.html')
     
+    def test_berat_list_exist(self):
+        response = Client().get('/berat/list')
+        self.assertEqual(response.status_code,200)
     
+    def test_berat_list_use_template(self):
+        response = Client().get('/berat/list')
+        self.assertTemplateUsed(response,'berat_register/berat_list.html')
