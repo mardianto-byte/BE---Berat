@@ -28,3 +28,8 @@ def berat_list(request) :
     list = Berat.objects.all().order_by('-tanggal')
     context = {"berat_list":list}
     return render(request,"berat_register/berat_list.html", context)
+
+def berat_delete(request, id):
+    berat = Berat.objects.get(pk=id)
+    berat.delete()
+    return redirect("/berat/list")
