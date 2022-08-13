@@ -3,14 +3,23 @@ from .forms import BeratForm
 from .models import Berat
 
 # Create your views here.
-def berat_form(request):
+def berat_form(request, id=0):
  
     # create object of form
     if request.method == "GET":
-        form = BeratForm()
+        if(id == 0):
+            form = BeratForm()
+        else:
+            berat = Berat.objects.get(pk=id)
+            form = BeratForm(instance=berat)
         return render(request, "berat_register/berat_form.html", {"form": form})
     else: 
-        form = BeratForm(request.POST)
+        if(id == 0):
+            form = BeratForm(request.POST)
+        else : 
+            berat = Berat.objects.get(pk=id)
+            form = BeratForm(request.POST,instance = berat)
+        # check if form data is valid
         if form.is_valid() :
             form.save()
         return redirect("/berat/list")
