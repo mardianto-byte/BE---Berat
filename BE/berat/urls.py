@@ -6,4 +6,5 @@ urlpatterns = [
     path('list', berat_list, name='berat_list'),
     path('<int:id>/', berat_form, name="update_berat"),
     path('delete/<int:id>/', berat_delete, name="delete_berat"),
+    path('detail/<int:id>/',berat_detail, name="berat_detail"),
 ]

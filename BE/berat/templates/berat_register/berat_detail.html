@@ -1,0 +1,37 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detail berat</title>
+</head>
+
+<body>
+<table BORDER="2" id="table_berat">
+    <tr>
+        <th>Tanggal</th>
+        <td>{{ detail_berat.tanggal}}</td>
+    </tr>
+    <tr>
+        <th>Max</th>
+        <td>{{ detail_berat.berat_max }}</td>
+    </tr>
+    <tr>
+        <th>Min</th>
+        <td>{{ detail_berat.berat_min }}</td>
+    </tr>
+    <tr>
+        <th>Perbedaan</th>
+        <td id="diff"></td>
+    </tr>
+        
+</table>
+<a href="{% url 'berat_list' %}" class="btn btn-secondary">List berat</a>
+
+
+<script>
+    var table = document.getElementById("table_berat"), diff;
+    diff  = (parseInt(table.rows[1].cells[1].innerHTML) - parseInt(table.rows[2].cells[1].innerHTML));
+    document.getElementById("diff").innerHTML = diff;
+</script>
+
+</body>
