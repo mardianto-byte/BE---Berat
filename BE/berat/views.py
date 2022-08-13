@@ -38,3 +38,6 @@ def berat_detail(request, id):
     berat = Berat.objects.get(pk=id)
     context = {"detail_berat":berat}
     return render(request, "berat_register/berat_detail.html", context)
+
+def home(request):
+    return render(request,"berat_register/home.html")

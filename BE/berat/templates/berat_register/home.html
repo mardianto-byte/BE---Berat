@@ -1,0 +1,14 @@
+{% extends "berat_register/base.html" %}
+
+{% block content %}
+<h3> Berat </h3>
+<br>
+<div>
+    <a href="{% url 'berat_form'%}" class="btn btn-primary">Add new Data</a>
+</div>
+<br>
+<div>
+    <a href="{% url 'berat_list' %}" class="btn btn-primary">List berat</a>
+</div>
+
+{% endblock content %}

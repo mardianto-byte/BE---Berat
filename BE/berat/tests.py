@@ -55,3 +55,7 @@ class TestURL(TestCase):
     def test_berat_detail_use_template(self):
         response = Client().get('/berat/detail/1/')
         self.assertTemplateUsed(response,'berat_register/berat_detail.html')
+
+    def test_home_request(self):
+        response = Client().get('/')
+        self.assertTemplateUsed(response, 'berat_register/home.html')
