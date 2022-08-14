@@ -7,3 +7,4 @@ Sebelum melanjutkan step berikutnya, sangat disarankan untuk membuat virtual env
 - Install requirements atau dependencies menggunakan `pip install -r requireemnts.txt`
 - Jalankan program dengan menggunakan command `python manage.py runserver`
 - Pada browser, lakukan pencarian terhadap URL `http://127.0.0.1:8000/`
+- Untuk mengecek code coverage, lakukan dengan menggunakan command `coverage run manage.py test && coverage report -m` 
